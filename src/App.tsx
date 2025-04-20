@@ -12,7 +12,7 @@ function App() {
       </header>
 
       <section className="bg-lime-400 py-20 mx-auto">
-        <div>
+        <div className=" mx-auto max-w-2xl">
           <Form/>
         </div>
       </section>

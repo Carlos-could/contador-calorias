@@ -5,42 +5,44 @@ import { ActivityActions } from "../reducers/activity-reducer"
 
 type FormProps = {
   dispatch: Dispatch<ActivityActions>
-} 
+}
 
-function Form({dispatch} : FormProps) {
+const initialActivity =  {
+  category: 1,
+  name: '',
+  calories: 0
+}
+
+function Form({ dispatch }: FormProps) {
 
 
-  const [activity, setActivity] = useState<Activity>(
-    {
-      category: 1,
-      name: '',
-      calories: 0
-    })
+  const [activity, setActivity] = useState<Activity>(initialActivity)
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
     const isNumberField = ['category', 'calories'].includes(e.target.id)
-    setActivity ({
+    setActivity({
       ...activity,
       [e.target.id]: isNumberField ? +e.target.value : e.target.value
     })
   }
   const isValidActivity = () => {
-    const {name, calories} = activity
+    const { name, calories } = activity
     return name.trim() !== '' && calories > 0
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    dispatch({type: 'save-activity', payload: {newActivity:activity}})
+    dispatch({ type: 'save-activity', payload: { newActivity: activity } })
+    setActivity(initialActivity)
   }
 
 
   return (
-    <form 
+    <form
       className="space-5  bg-white p-10 rounded-lg space-y-5"
       onSubmit={handleSubmit}
-      >
-    
+    >
+
       <div className="grid grid-cols-1 gap-3">
         <label htmlFor="category" className="font-semibold">Calorias</label>
         <select

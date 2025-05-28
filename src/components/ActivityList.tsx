@@ -16,10 +16,10 @@ export default function ActivityList({ activities }: ActivityListProps) {
         <div key={activity.id} className="px-5 py-10 bg-white mt-5 flex justify-between">
           <div className="space-y-2 relative">
             <p>
-              {activity.calories}
+              {activity.category}
             </p>
             <p className="text-2xl pt-5">{activity.name}</p>
-            <p>{activity.calories} {''}
+            <p className="text-4xl text-lime-500">{activity.calories} {''}
               <span>Calorias</span>
             </p>
           </div>

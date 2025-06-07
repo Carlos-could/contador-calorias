@@ -20,8 +20,10 @@ function App() {
 
       <section className="bg-lime-400 py-20 mx-auto">
         <div className=" mx-auto max-w-2xl">
-          <Form 
-            dispatch = {dispatch}/>
+          <Form
+            state = {state}
+            dispatch = {dispatch}
+            />
         </div>
       </section>
 

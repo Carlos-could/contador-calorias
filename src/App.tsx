@@ -2,6 +2,7 @@ import { useReducer } from "react"
 import Form from "./components/Form"
 import { activityReducer, initialState } from "./reducers/activity-reducer"
 import ActivityList from "./components/ActivityList"
+import Formulario from "./components/Formulario"
 
 function App() {
 
@@ -34,6 +35,10 @@ function App() {
           dispatch = {dispatch}
           />
 
+      </section>
+
+      <section>
+        <Formulario/>
       </section>
     </>
   )

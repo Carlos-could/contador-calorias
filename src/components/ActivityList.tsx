@@ -1,15 +1,18 @@
+import { useMemo, Dispatch } from "react"
 import { Activity } from "../types"
 import { categories } from "../data/categories"
-import { useMemo } from "react"
-import { HiOutlinePencilSquare  } from "react-icons/hi2";
+import { HiOutlinePencilSquare } from "react-icons/hi2";
+import { ActivityActions } from "../reducers/activity-reducer";
 
 type ActivityListProps = {
-  activities: Activity[]
+  activities: Activity[],
+  dispatch: Dispatch<ActivityActions>
 }
 
-export default function ActivityList({ activities }: ActivityListProps) {
 
-  const categoryName = useMemo(()=> (category: Activity['category']) => categories.map(cat => cat.id === category ? cat.name : ''), [activities])
+export default function ActivityList({ activities, dispatch }: ActivityListProps) {
+
+  const categoryName = useMemo(() => (category: Activity['category']) => categories.map(cat => cat.id === category ? cat.name : ''), [activities])
   return (
     <>
       <h2 className='text-4xl text-slate-600 text-center'>
@@ -28,9 +31,10 @@ export default function ActivityList({ activities }: ActivityListProps) {
 
           </div>
           <div className="flex gap-5 items-center">
-            <button>
+            
+            <button onClick={()=> dispatch({type:'set-activeId', payload: {id: activity.id} })}>
 
-          <HiOutlinePencilSquare  className="w-8 h-8 text-stone-600"/>
+              <HiOutlinePencilSquare className="w-8 h-8 text-stone-600" />
             </button>
 
           </div>
